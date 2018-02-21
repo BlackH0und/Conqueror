@@ -12,7 +12,7 @@ import ch.blackh0und.Field;
  * @author 5im16maschifferle
  */
 public class AttackingArmee {
-    private int troops ;
+    private int troops;
     private Field from;
     private Field to;
 
