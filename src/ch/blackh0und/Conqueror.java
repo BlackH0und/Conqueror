@@ -13,11 +13,18 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
+import java.net.SocketAddress;
+
 /**
  *
  * @author marc3
  */
 public class Conqueror extends Application {
+
+    private boolean isserver = true;
+    private double seedOne, seedTwo;
+
+    private SocketAddress serverAddress;
     
     //endField for AttackingTroops needs to be selected
     @Override
@@ -29,7 +36,7 @@ public class Conqueror extends Application {
         primaryStage.show();
         
         Server s = new Server(6725);
-        Client c = new Client()
+        Client c = new Client(serverAddress);
     }
 
     /**

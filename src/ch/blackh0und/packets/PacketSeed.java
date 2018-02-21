@@ -13,35 +13,35 @@ import java.nio.ByteBuffer;
  */
 public class PacketSeed extends Packet{
 
-    private int seedOne;
-    private int seedTwo;
+    private double seedOne;
+    private double seedTwo;
 
     public PacketSeed() {
     }
 
-    public PacketSeed(int seedOne, int seedTwo) {
+    public PacketSeed(double seedOne, double seedTwo) {
         this.seedOne = seedOne;
         this.seedTwo = seedTwo;
     }
 
-    public int getSeedOne() {
+    public double getSeedOne() {
         return seedOne;
     }
 
-    public int getSeedTwo() {
+    public double getSeedTwo() {
         return seedTwo;
     }
     
     @Override
     public void serialize(ByteBuffer buffer) {
-        buffer.putInt(seedOne);
-        buffer.putInt(seedTwo);
+        buffer.putDouble(seedOne);
+        buffer.putDouble(seedTwo);
     }
 
     @Override
     public void deserialize(ByteBuffer buffer) {
-        seedOne = buffer.getInt();
-        seedTwo = buffer.getInt();
+        seedOne = buffer.getDouble();
+        seedTwo = buffer.getDouble();
     }
     
 }
