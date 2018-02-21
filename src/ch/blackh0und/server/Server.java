@@ -40,6 +40,8 @@ public class Server implements Runnable {
     private int port;
     private boolean running = false;
 
+    private double seedOne, seedTwo;
+
     private HandlePacket handlePacket;
 
     public Server(int port) {
@@ -53,6 +55,11 @@ public class Server implements Runnable {
         } catch (IOException ex) {
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public void setSeeds(double seedOne, double seedTwo) {
+        this.seedOne = seedOne;
+        this.seedTwo = seedTwo;
     }
 
     public HashMap<SocketAddress, SocketChannel> getClients() {
@@ -92,7 +99,7 @@ public class Server implements Runnable {
                                 sChannel.register(selector, SelectionKey.OP_READ);
 
                                 //Seed versenden
-                                PacketSeed ps = new PacketSeed(port, port);
+                                PacketSeed ps = new PacketSeed(seedOne, seedTwo);
                                 
                                 clients.put(sChannel.getRemoteAddress(), sChannel);
                             } catch (ClosedChannelException ex) {

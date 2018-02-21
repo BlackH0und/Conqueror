@@ -14,6 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.net.SocketAddress;
+import java.util.Random;
 
 /**
  *
@@ -29,6 +30,9 @@ public class Conqueror extends Application {
     //endField for AttackingTroops needs to be selected
     @Override
     public void start(Stage primaryStage) {
+        Random r = new Random();
+        seedOne = r.nextDouble();
+        seedTwo = r.nextDouble();
         Button start = new Button("Start");
         HBox h = new HBox(start);
         Scene scene = new Scene(h);
@@ -36,6 +40,7 @@ public class Conqueror extends Application {
         primaryStage.show();
         
         Server s = new Server(6725);
+        s.setSeeds(seedOne, seedTwo);
         Client c = new Client(serverAddress);
     }
 
